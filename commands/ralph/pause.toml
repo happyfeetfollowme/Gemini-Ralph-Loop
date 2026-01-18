@@ -1,17 +1,9 @@
 prompt = """
-Pause the Ralph Loop.
+Pause the current Ralph Loop.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_pause_loop` tool.
 
-2. If no active loop, say: No active loop to pause
-
-3. If status is running:
-   - Set status to paused
-   - Update lastUpdate to current time
-   - Add note: Loop paused
-   - Write back to state.json
-
-4. Confirm: Loop paused at iteration X. Resume with /ralph:resume
+2. Report the result to the user.
 """

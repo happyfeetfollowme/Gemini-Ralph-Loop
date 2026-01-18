@@ -1,17 +1,9 @@
 prompt = """
-Show Ralph Loop configuration.
+Get the current configuration of the Ralph Loop.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_get_config` tool.
 
-2. If no file, show defaults: Max Iterations: 100, Completion Promise: COMPLETE
-
-3. If file exists, show current config:
-   - ID
-   - Max Iterations
-   - Completion Promise
-   - Current Iteration
-   - Remaining iterations
-   - How to modify with /ralph:adjust
+2. Display the configuration settings to the user.
 """

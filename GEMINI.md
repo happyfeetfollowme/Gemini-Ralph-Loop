@@ -4,43 +4,33 @@ Ralph Loop enables iterative, self-referential development where you work on a t
 
 ## State Management
 
-Ralph Loop stores state in `.ralph-state/` directory:
+Ralph Loop state is managed via the `ralph-state-server` MCP tools. The state directory defaults to `.ralph-state/` but can be customized via the `RALPH_STATE_DIR` environment variable.
 
-- `.ralph-state/state.json` - Current loop state
-- `.ralph-state/history.json` - Iteration history
-- `.ralph-state/checkpoints/` - Saved checkpoints
-
-## State File Format
-
-`.ralph-state/state.json`:
-
-```
-{"id": "loop-
-```
+**DO NOT** attempt to read or write the state files directly unless instructed otherwise. Always use the provided MCP tools to interact with the loop state.
 
 ## Commands
 
-/ralph:start-loop `<task>` - Start a new loop
-/ralph:status - Check current status
-/ralph:pause - Pause the loop
-/ralph:resume - Resume paused loop
-/ralph:complete - Mark as completed
-/ralph:cancel - Cancel the loop
-/ralph:history - View iteration history
-/ralph:checkpoint `<name>` - Create checkpoint
-/ralph:restore `<name>` - Restore checkpoint
-/ralph:reset - Clear all state
-/ralph:help - Show help
+- `/ralph:start-loop <task>` - Initialize and start a new development loop.
+- `/ralph:status` - Check the current progress and status of the loop.
+- `/ralph:pause` - Pause the current loop.
+- `/ralph:resume` - Resume a paused loop.
+- `/ralph:complete` - Mark the loop as successfully completed.
+- `/ralph:cancel` - Stop and cancel the current loop.
+- `/ralph:history` - View the iteration history.
+- `/ralph:checkpoint <name>` - Create a named checkpoint of the current state.
+- `/ralph:restore <name>` - Restore the state from a named checkpoint.
+- `/ralph:reset` - Clear all Ralph Loop state and data.
+- `/ralph:help` - Show detailed help and usage instructions.
 
 ## Workflow
 
-Start: /ralph:start-loop "Build a REST API"
-Work iteratively, updating .ralph-state/state.json after each step
-When done, output: `<done>`COMPLETE `</done>`
+1. **Start**: Use `/ralph:start-loop "Your task description"` to begin.
+2. **Iterate**: The loop will proceed in steps. After each meaningful change or sub-task completion, call the `ralph_increment_iteration` tool (or follow the command's specific instructions).
+3. **Complete**: When the goal is met, call `ralph_complete_loop` and output `<done>COMPLETE</done>`.
 
 ## Important Rules
 
-Always read .ralph-state/state.json before making changes
-Increment iteration counter after each meaningful progress
-Files you create persist between iterations
-Use checkpoints before risky changes
+1. **Use Tools**: Always use MCP tools (e.g., `ralph_get_state`, `ralph_increment_iteration`) to manage state.
+2. **Persistence**: Your files and environment changes persist between iterations.
+3. **Checkpoints**: Use `ralph_create_checkpoint` before making risky or large-scale changes.
+4. **Context**: If you lose track of what to do next, use `/ralph:status` or `ralph_get_state` to orient yourself.

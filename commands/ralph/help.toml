@@ -1,29 +1,30 @@
 prompt = """
 # Ralph Loop Help
 
-Ralph Loop is an iterative development system. State is stored in .ralph-state/ directory.
+Ralph Loop is an iterative development system that enables autonomous, self-referential development cycles.
 
 ## Commands
 
-- /ralph:start-loop <task> - Start a new loop
-- /ralph:status - Check current status  
-- /ralph:pause - Pause the loop
-- /ralph:resume - Resume paused loop
-- /ralph:complete - Mark as completed
-- /ralph:cancel - Cancel the loop
-- /ralph:history - View iteration history
-- /ralph:checkpoint <name> - Create checkpoint
-- /ralph:restore <name> - Restore checkpoint
-- /ralph:reset - Clear all state
-- /ralph:iterate <note> - Record progress
+- `/ralph:start-loop <task>` - Initialize and start a new development loop.
+- `/ralph:status` - Check the current progress and status of the loop.
+- `/ralph:pause` - Pause the current loop.
+- `/ralph:resume` - Resume a paused loop.
+- `/ralph:complete` - Mark the loop as successfully completed.
+- `/ralph:cancel` - Stop and cancel the current loop.
+- `/ralph:history` - View the iteration history.
+- `/ralph:checkpoint <name>` - Create a named checkpoint of the current state.
+- `/ralph:restore <name>` - Restore the state from a named checkpoint.
+- `/ralph:reset` - Clear all Ralph Loop state and data.
+- `/ralph:iterate <note>` - Record progress for the current step.
 
 ## Quick Start
 
-1. /ralph:start-loop "Build a calculator app"
-2. Work on the task, I will track iterations
-3. When finished, output: <done>COMPLETE</done>
+1. Start a loop: `/ralph:start-loop "Build a calculator app"`
+2. Work on the task. Gemini will track your iterations automatically.
+3. Record progress: `/ralph:iterate "Added UI layout"`
+4. When finished, output: `<done>COMPLETE</done>`
 
-## State Location
+## State Management
 
-All state is in .ralph-state/state.json - you can read it anytime.
+Ralph Loop state is managed via MCP tools. The state directory can be customized using the `RALPH_STATE_DIR` environment variable. By default, it uses `.ralph-state/` in the current directory.
 """

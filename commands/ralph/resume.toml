@@ -1,19 +1,9 @@
 prompt = """
-Resume the paused Ralph Loop.
+Resume a paused Ralph Loop.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_resume_loop` tool.
 
-2. If no file or status is not paused, say: No paused loop to resume
-
-3. If status is paused:
-   - Set status to running
-   - Update lastUpdate to current time
-   - Add note: Loop resumed
-   - Write back to state.json
-
-4. Display: Loop resumed at iteration X
-
-5. Read the goal and continue working on the task from where you left off
+2. Report the result to the user.
 """

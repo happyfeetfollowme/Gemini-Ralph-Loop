@@ -3,15 +3,15 @@ Monitor Ralph Loop progress.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_get_state` tool to get the current progress and monitoring data.
 
-2. If no active loop, say: No loop to monitor
+2. If no active loop, say: No loop to monitor.
 
 3. Display a dashboard view with:
    - Status with emoji
    - Progress bar visualization
    - Iteration count
-   - Goal (truncated if long)
-   - Time since lastUpdate
-   - Recent activity (last 3 notes)
+   - Goal
+   - Time since last update
+   - Recent activity
 """

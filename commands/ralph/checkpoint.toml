@@ -1,17 +1,12 @@
 prompt = """
-Create a checkpoint named: {{args}}
+Create a checkpoint for the current Ralph Loop.
+
+## Args
+- name: {{args}}
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_create_checkpoint` tool with the provided name.
 
-2. If no active loop, say: No active loop to checkpoint
-
-3. Create .ralph-state/checkpoints/ directory if needed
-
-4. Copy current state to .ralph-state/checkpoints/<name>.json
-
-5. Add note to state.json: Checkpoint created: <name>
-
-6. Display confirmation with checkpoint name, iteration, and restore command
+2. Report the result to the user.
 """

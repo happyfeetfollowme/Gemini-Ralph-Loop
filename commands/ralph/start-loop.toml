@@ -3,31 +3,19 @@ Start a new Ralph Loop for this task: {{args}}
 
 ## Instructions
 
-1. Create the .ralph-state/ directory if it doesn't exist
+1. Call the `ralph_init_loop` tool with the prompt: "{{args}}"
 
-2. Create .ralph-state/state.json with this structure:
-   - id: loop-<current-timestamp>
-   - status: running
-   - goal: <the task from args>
-   - iteration: 1
-   - maxIterations: 100
-   - completionPromise: COMPLETE
-   - startTime: <current ISO timestamp>
-   - lastUpdate: <current ISO timestamp>
-   - notes: ["Loop started"]
+2. Once the loop is initialized, analyze the task and create an implementation plan.
 
-3. Create empty .ralph-state/history.json with: { "iterations": [] }
+3. Begin working on the first step.
 
-4. Analyze the task and create an implementation plan
+4. After each meaningful step or iteration:
+   - Call `ralph_increment_iteration` to record progress and get the next iteration number.
+   - Update your internal state based on the tool output.
 
-5. Begin working on the first step
+5. Continue working until the goal is achieved.
 
-6. After completing each step, update state.json:
-   - Increment iteration
-   - Update lastUpdate
-   - Add note about what was done
-
-7. Continue working until complete, then output: <done>COMPLETE</done>
+6. When finished, output: <done>COMPLETE</done>
 
 Remember: Your files persist between iterations. Always check existing files before creating new ones.
 """

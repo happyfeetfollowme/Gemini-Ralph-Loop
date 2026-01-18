@@ -1,15 +1,9 @@
 prompt = """
-Show Ralph Loop history.
+View Ralph Loop history.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_get_history` tool.
 
-2. If no file exists, say: No loop history available
-
-3. Display the notes array as a numbered timeline showing:
-   - Goal
-   - Current status
-   - All notes in order
-   - Current iteration of maxIterations
+2. Display the history records to the user.
 """

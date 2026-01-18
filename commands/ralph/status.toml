@@ -3,17 +3,9 @@ Check Ralph Loop status.
 
 ## Instructions
 
-1. Read .ralph-state/state.json
+1. Call the `ralph_get_state` tool to get the current status of the Ralph Loop.
 
-2. If file doesn't exist, display: No active Ralph Loop. Start one with: /ralph:start-loop "Your task"
+2. Display the status report returned by the tool to the user.
 
-3. If file exists, display a status report with:
-   - ID
-   - Status (with emoji: running=ðŸ”„, paused=â¸ï¸, completed=âœ…, cancelled=âŒ)
-   - Goal
-   - Progress (Iteration X of Y)
-   - Started time
-   - Last Update time
-   - Recent Notes (last 3)
-   - Next steps suggestion
+3. If no loop is active, suggest starting one with: `/ralph:start-loop "Your task"`
 """

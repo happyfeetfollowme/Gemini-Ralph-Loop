@@ -1,21 +1,12 @@
 prompt = """
-Adjust loop parameters: {{args}}
+Adjust Ralph Loop parameters dynamically.
+
+## Args
+- Parameters: {{args}}
 
 ## Instructions
 
-1. Read .ralph-state/state.json
-
-2. If no active loop, say: No active loop to adjust
-
-3. Parse args for:
-   - --max-iterations N or -m N
-   - --completion-promise text or -c text
-
-4. Update the values in state.json
-
-5. Add note: Config adjusted with what changed
-
-6. Display new configuration
-
-Example: /ralph:adjust --max-iterations 150
+1. Parse the parameters from "{{args}}".
+2. Call the `ralph_adjust_parameters` tool with the appropriate values.
+3. Report the updated configuration to the user.
 """
