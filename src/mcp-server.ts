@@ -16,7 +16,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import * as fs from "fs";
 import * as path from "path";
-import { execSync } from "child_process";
+import { execSync, execFileSync } from "child_process";
 
 // ============================================================================
 // Configuration
@@ -307,7 +307,7 @@ function autoCommitChanges(iteration: number, message?: string): string | undefi
     try {
         execSync("git add -A", { cwd: WORKSPACE, timeout: 10000 });
         const commitMessage = message || `[ralph] Iteration ${iteration} - ${new Date().toISOString()}`;
-        execSync(`git commit -m "${commitMessage}"`, { cwd: WORKSPACE, timeout: 10000 });
+        execFileSync("git", ["commit", "-m", commitMessage], { cwd: WORKSPACE, timeout: 10000 });
         return getGitHead();
     } catch {
         return undefined;
@@ -354,7 +354,8 @@ function saveCheckpoint(name: string, state: LoopState, description?: string): C
 }
 
 function loadCheckpoint(name: string): Checkpoint | null {
-    const checkpointFile = path.join(getCheckpointsDir(), `${name}.json`);
+    const safeName = path.basename(name);
+    const checkpointFile = path.join(getCheckpointsDir(), `${safeName}.json`);
     if (fs.existsSync(checkpointFile)) {
         try {
             const content = fs.readFileSync(checkpointFile, "utf-8");
@@ -388,7 +389,8 @@ function listCheckpoints(): Checkpoint[] {
 }
 
 function deleteCheckpoint(name: string): boolean {
-    const checkpointFile = path.join(getCheckpointsDir(), `${name}.json`);
+    const safeName = path.basename(name);
+    const checkpointFile = path.join(getCheckpointsDir(), `${safeName}.json`);
     if (fs.existsSync(checkpointFile)) {
         fs.unlinkSync(checkpointFile);
         return true;
